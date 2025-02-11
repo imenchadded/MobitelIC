@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class ThankYouScreen extends StatelessWidget {
   const ThankYouScreen({Key? key}) : super(key: key);
@@ -76,8 +79,8 @@ class ThankYouScreen extends StatelessWidget {
 
                       //'https://integrio.net/static/295c755a70d407c10ef0ed3a3bd907a7/10-ways-to-validate-future-product-idea-before-mvp.png' ,
 
-//'https://cdn.prod.website-files.com/65cb522705dd95fa5a20a2fa/66a381d820057d4e72939f4e_25e5a1d3-4ca6-4c23-8f0e-2a8c4463a767.webp',
-'https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/d77e139f-5558-4a98-82d6-aeab3827dc61',
+                      //'https://cdn.prod.website-files.com/65cb522705dd95fa5a20a2fa/66a381d820057d4e72939f4e_25e5a1d3-4ca6-4c23-8f0e-2a8c4463a767.webp',
+                      'https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/d77e139f-5558-4a98-82d6-aeab3827dc61',
 
                       width: 258,
                       height: 307,
@@ -102,7 +105,9 @@ class ThankYouScreen extends StatelessWidget {
                   // Back Button
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                                  SystemNavigator.pop(); // This will close the app
+
+         //   exit(0); // This will forcefully close the app
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF2C2C2C),
@@ -119,7 +124,7 @@ class ThankYouScreen extends StatelessWidget {
                       ),
                     ),
                     child: const Text(
-                      'Back',
+                      'close',
                       style: TextStyle(
                         color: Color(0xFFF5F5F5),
                         fontSize: 16,
