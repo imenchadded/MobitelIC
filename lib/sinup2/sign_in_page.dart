@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mobitelic_flutter/Login/login_page.dart';
 
 class SignInPage extends StatefulWidget {
@@ -158,13 +159,13 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                     const SizedBox(height: 20),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        _buildSocialButton('https://dashboard.codeparrot.ai/api/image/Z6ssk_rycnbNR_pb/social-i.png'),
-                        const SizedBox(width: 20),
-                        _buildSocialButton('https://dashboard.codeparrot.ai/api/image/Z6ssk_rycnbNR_pb/social-i-2.png'),
-                      ],
-                    ),
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _buildSocialButton(FontAwesomeIcons.google ,context,Color.fromARGB(255, 250, 142, 1)),
+                const SizedBox(width: 20),
+                _buildSocialButton(FontAwesomeIcons.facebook ,context,  Color(0xFF4285F4)),
+               ],
+            ),
                   ],
                 ),
               ),
@@ -237,7 +238,7 @@ class _SignInPageState extends State<SignInPage> {
             style: TextStyle(
               color: color,
               fontFamily: 'Roboto',
-              fontSize: 18,
+              fontSize: 12.5,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -245,23 +246,39 @@ class _SignInPageState extends State<SignInPage> {
       ),
     );
   }
-
-  Widget _buildSocialButton(String imageUrl) {
+ Widget _buildSocialButton(IconData icon, BuildContext context ,  Color color)  {
     return InkWell(
       onTap: () {
-        // Handle social login
+        // Handle social login logic here
+        _handleSocialLogin(icon , context);
       },
       child: Container(
-        width: 48,
-        height: 48,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(imageUrl),
-            fit: BoxFit.cover,
-          ),
+        padding: EdgeInsets.all(10), // Add padding for better touch area
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            FaIcon(
+              icon,
+               size: 30, // Set the size of the icon
+          color: color,
+              //color:  Color.fromARGB(200, 200, 150, 15) :key: ,Color.fromARGB(255, 0, 135, 245)  // Set the color of the icon
+            ),
+            SizedBox(width: 8), // Space between icon and text
+            
+          ],
         ),
       ),
     );
   }
+
+  Future<void> _handleSocialLogin(IconData provider, BuildContext context) async {
+    // Perform social login logic here
+    // After successful sign-in, navigate to the HomePage
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => LoginPage()),
+    );
+  }
 }
+
 

@@ -30,9 +30,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  font_awesome_flutter: ^10.1.0
   camera: ^0.9.4+19
-  battery_info: ^1.1.1  # Ensure this line is present
+  battery_info: ^1.1.1
   connectivity_plus: ^2.3.0
+
 
   # This line should be indented with 2 spaces
   # The following adds the Cupertino Icons font to your application.
